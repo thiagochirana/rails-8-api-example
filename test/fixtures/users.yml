@@ -1,9 +1,16 @@
-<% password_digest = BCrypt::Password.create("password") %>
+<% password_digest = BCrypt::Password.create("12345678") %>
+<% require 'cpf_cnpj' %>
 
 one:
+  firstname: Admin
+  document_type: CPF
+  document_number: <%= CPF.generate %>
   email_address: one@example.com
   password_digest: <%= password_digest %>
 
 two:
+  firstname: User
+  document_type: CPF
+  document_number: <%= CPF.generate %>
   email_address: two@example.com
   password_digest: <%= password_digest %>
