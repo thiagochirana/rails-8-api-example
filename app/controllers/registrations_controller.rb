@@ -49,7 +49,16 @@ class RegistrationsController < ApplicationController
   private
 
     def user_create_params
-      params.permit(:nickname, :email, :password, :password_confirmation)
+      params.permit(
+        :firstname,
+        :lastname,
+        :birthday,
+        :document_number,
+        :document_type,
+        :email,
+        :password,
+        :password_confirmation
+      )
     end
 
     def user_update_params
