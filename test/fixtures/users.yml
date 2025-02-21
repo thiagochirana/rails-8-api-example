@@ -5,12 +5,12 @@ one:
   firstname: Admin
   document_type: CPF
   document_number: <%= CPF.generate %>
-  email_address: one@example.com
+  email: one@example.com
   password_digest: <%= password_digest %>
 
 two:
   firstname: User
   document_type: CPF
   document_number: <%= CPF.generate %>
-  email_address: two@example.com
+  email: two@example.com
   password_digest: <%= password_digest %>

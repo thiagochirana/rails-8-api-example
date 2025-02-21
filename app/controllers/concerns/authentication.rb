@@ -72,11 +72,6 @@ module Authentication
     unauthorized_request unless current_user.role_admin? || !current_user.role_user?
   end
 
-
-
-  def require_admin_role
-  end
-
   def request_need_authentication
     unless response.body.present?
       render json: { errors: [ "É necessário logar-se para acessar funcionalidade" ] }, status: :unauthorized

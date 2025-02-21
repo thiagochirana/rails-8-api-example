@@ -12,7 +12,7 @@ class User < ApplicationRecord
   def self.authenticating(params)
     if params[:login].include?("@")
       authenticate_by(email: params[:login], password: params[:password])
-    else
+    elsif CPF.valid?(params[:login]) || CNPJ.valid?(params[:login])
       authenticate_by(document_number: params[:login], password: params[:password])
     end
   end
