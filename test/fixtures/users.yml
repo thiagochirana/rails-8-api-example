@@ -3,14 +3,17 @@
 
 one:
   firstname: Admin
-  document_type: CPF
+  lastname: System
+  birthday: <%= Date.today %>
   document_number: <%= CPF.generate %>
-  email: one@example.com
+  email: admin@email.com
+  role: admin
   password_digest: <%= password_digest %>
 
 two:
   firstname: User
-  document_type: CPF
+  lastname: "da Silva"
+  birthday: <%= Date.today %>
   document_number: <%= CPF.generate %>
-  email: two@example.com
+  email: user@email.com
   password_digest: <%= password_digest %>

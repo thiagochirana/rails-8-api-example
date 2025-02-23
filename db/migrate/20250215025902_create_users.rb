@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[8.0]
       t.string :lastname
       t.date   :birthday
       t.string :document_number # --> it can be CPF or CNPJ
-      t.string :document_type, null: false
+      t.string :document_type
       t.string :role
       t.string :email, null: false
       t.string :password_digest, null: false
@@ -13,6 +13,5 @@ class CreateUsers < ActiveRecord::Migration[8.0]
       t.timestamps
     end
     add_index :users, :email,           unique: true
-    add_index :users, :document_number, unique: true
   end
 end

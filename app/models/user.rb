@@ -1,17 +1,19 @@
 class User < ApplicationRecord
   has_secure_password
-
-  enum :role, { admin: "admin", user: "user" }, default: "user"
-  enum :document_type, { CPF: "CPF", CNPJ: "CNPJ" }, default: "CNPJ"
-
+  enum :role, { admin: "admin", user: "user" }
+  enum :document_type, { CPF: "CPF", CNPJ: "CNPJ" }
+  
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :document_number, uniqueness: true, if: :document_number_is_present?
   normalizes :email, with: ->(e) { e.strip.downcase }
   validates :password, presence: true, length: { minimum: 8 }, on: :create
   validate :password_does_not_contain_spaces
   validate :password_does_not_contain_invalid_chars
   
-  before_create :document_number_is_valid?
-
+  after_initialize :set_document_type
+  after_initialize :set_role_user
+  validate :document_number_is_valid?
+  
   def self.authenticating(params)
     if params[:login].include?("@")
       authenticate_by(email: params[:login], password: params[:password])
@@ -20,8 +22,31 @@ class User < ApplicationRecord
     end
   end
 
+  private
+
+  def set_document_type
+    return unless document_number.present?
+    self.document_type = if CPF.valid?(document_number)
+      :CPF
+    elsif CNPJ.valid?(document_number)
+      :CNPJ
+    end
+  end
+
+  def set_role_user
+    self.role = :user unless self.role
+  end
+
   def document_number_is_valid?
-    self.document_type == :CPF ? CPF.valid?(self.document_number) : CNPJ.valid?(self.document_number)
+    return unless document_number.present?
+    is_valid = case document_type
+    when 'CPF'
+      CPF.valid?(document_number)
+    when 'CNPJ'
+      CNPJ.valid?(document_number)
+    end
+    
+    errors.add(:document_number, "não é válido") unless is_valid
   end
 
   def password_present?

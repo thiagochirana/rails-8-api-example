@@ -28,13 +28,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_15_025903) do
     t.string "lastname"
     t.date "birthday"
     t.string "document_number"
-    t.string "document_type", null: false
+    t.string "document_type"
     t.string "role"
     t.string "email", null: false
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["document_number"], name: "index_users_on_document_number", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
