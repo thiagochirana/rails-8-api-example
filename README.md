@@ -1,24 +1,16 @@
-# README
+# Rails 8 Api Example API Documentation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### [GET] /up
+- **Controller#Action:** `rails/health#show`
+#### [POST] /backend/v1/auth/login
+- **Controller#Action:** `sessions#create`
+#### [PUT] /backend/v1/auth/refresh
+- **Controller#Action:** `sessions#refresh`
+#### [POST] /backend/v1/register
+- **Controller#Action:** `registrations#create`
+#### [PUT] /backend/v1/register/update
+- **Controller#Action:** `registrations#update`
+#### [PUT] /backend/v1/register/reset_password
+- **Controller#Action:** `registrations#reset_password`
+#### [GET] /
+- **Controller#Action:** `rails/welcome#index`
