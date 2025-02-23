@@ -49,6 +49,10 @@ class User < ApplicationRecord
     errors.add(:document_number, "não é válido") unless is_valid
   end
 
+  def document_number_is_present?
+    self.document_number.present?
+  end
+
   def password_present?
     password.present?
   end

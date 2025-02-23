@@ -7,9 +7,9 @@ Rails.application.routes.draw do
         put "/refresh", to: "sessions#refresh"
       end
       scope :register do
-        post "/", to: "registrations#create"
-        put "/update", to: "registrations#update"
-        put "reset_password", to: "registrations#reset_password"
+        post "/", to: "registrations#create", as: :register
+        put "/update", to: "registrations#update", as: :register_update
+        put "reset_password", to: "registrations#reset_password", as: :register_reset_pass
       end
     end
   end
