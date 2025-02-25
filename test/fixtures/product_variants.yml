@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  size: MyString
+  color: MyString
+  estampa: MyString
+  material_type: MyString
+  capacity_ml: MyString
+  weight_g: MyString
+  stock_quantity: MyString
+  product: one
+
+two:
+  size: MyString
+  color: MyString
+  estampa: MyString
+  material_type: MyString
+  capacity_ml: MyString
+  weight_g: MyString
+  stock_quantity: MyString
+  product: two
