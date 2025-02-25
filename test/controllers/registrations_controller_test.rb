@@ -18,4 +18,9 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     post register_url, params: { email: "invalid" }
     assert_response :bad_request
   end
+
+  test "should not register with invalid document" do
+    post register_url, params: { email: "usertest@email.com", document_number: "123456" }
+    assert_response :bad_request
+  end
 end
