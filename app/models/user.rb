@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :addresses, dependent: :destroy
+  accepts_nested_attributes_for :addresses, allow_destroy: true
+
   enum :role, { admin: "admin", user: "user" }
   enum :document_type, { CPF: "CPF", CNPJ: "CNPJ" }
   

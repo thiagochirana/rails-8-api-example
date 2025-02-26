@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   scope :backend do
     scope :v1 do
       scope :auth do
-        post "/login", to: "sessions#create"
-        put "/refresh", to: "sessions#refresh"
+        post "/login", to: "sessions#create", as: :login
+        put "/refresh", to: "sessions#refresh", as: :refresh
       end
       scope :register do
         post "/", to: "registrations#create", as: :register
