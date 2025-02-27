@@ -61,15 +61,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_023341) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "ip_address"
-    t.string "user_agent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sessions_on_user_id"
-  end
-
   create_table "stock_transactions", force: :cascade do |t|
     t.bigint "product_variant_id", null: false
     t.string "quantity"
@@ -97,6 +88,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_023341) do
   add_foreign_key "addresses", "users"
   add_foreign_key "product_variants", "products"
   add_foreign_key "products", "categories"
-  add_foreign_key "sessions", "users"
   add_foreign_key "stock_transactions", "product_variants"
 end
