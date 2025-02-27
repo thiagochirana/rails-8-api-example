@@ -15,10 +15,6 @@ module Authentication
     def allow_to_admin(**options)
       before_action :require_admin_role, **options
     end
-
-    def allow_to_users(**options)
-      before_action :require_user_role, **options
-    end
   end
 
   def gen_access_token(user)
