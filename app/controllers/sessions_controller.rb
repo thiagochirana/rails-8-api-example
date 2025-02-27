@@ -7,9 +7,17 @@ class SessionsController < ApplicationController
     if user.is_a?(User) && user.errors.any?
       render json: { errors: user.errors.full_messages }, status: :unauthorized
     elsif user
+      access_token = gen_access_token(user)
+
+      cookies.signed[:refresh_token] = {
+        value: gen_refresh_token(user),
+        httponly: true,
+        secure: Rails.env.production?,
+        same_site: :strict
+      }
+
       render json: { 
-        access_token: gen_access_token(user),
-        refresh_token: gen_refresh_token(user),
+        access_token: access_token,
         message: "Logado com sucesso!",
         expires_at: 6.hours.from_now
       }
