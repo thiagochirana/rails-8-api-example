@@ -11,9 +11,19 @@ one:
   password_digest: <%= password_digest %>
 
 two:
-  firstname: User
-  lastname: "da Silva"
+  firstname: NaoRegistrado
+  lastname: Unregistered
   birthday: <%= Date.today %>
   document_number: <%= CPF.generate %>
+  role: unregistered
+  email: unregistered@email.com
+  password_digest: <%= password_digest %>
+
+three:
+  firstname: User
+  lastname: Usuario
+  birthday: <%= Date.today %>
+  document_number: <%= CPF.generate %>
+  role: user
   email: user@email.com
   password_digest: <%= password_digest %>

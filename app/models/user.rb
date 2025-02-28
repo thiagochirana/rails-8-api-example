@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :addresses, dependent: :destroy
   accepts_nested_attributes_for :addresses, allow_destroy: true
 
-  enum :role, { admin: "admin", user: "user" }
+  enum :role, { admin: "admin", user: "user", unregistered: "unregistered" }
   enum :document_type, { CPF: "CPF", CNPJ: "CNPJ" }
   
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
